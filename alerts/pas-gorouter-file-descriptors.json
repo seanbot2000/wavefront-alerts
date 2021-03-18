@@ -1,0 +1,26 @@
+{
+    "minutes": $config.pasGoRouterFileDescriptors.minutes,
+    "name": "PAS Gorouter File Descriptors",
+    "tags": {
+      $config.pasGoRouterFileDescriptors.tags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.gorouter.file_descriptors.file"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.gorouter.file_descriptors.file, foundation=\"$config.foundation\") > 50000",
+      "severe": "ts(pcf.gorouter.file_descriptors.file, foundation=\"$config.foundation\") > 60000"
+    },
+    "targets": {
+      "warn": "target:yyZomPfVUlDbXksE",
+      "severe": "target:PTNWDMcyDFV4n3d8"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.gorouter.file_descriptors.file, foundation=\"$config.foundation\")",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasGoRouterFileDescriptors.resolveAfterMinutes,
+    "additionalInformation": "The number of file descriptors currently used by the Gorouter job. Indicates an impending issue with the Gorouter. Without proper mitigation, it is possible for an unresponsive app to eventually exhaust available Gorouter file descriptors and cause route starvation for other apps running on PAS. Under heavy load, this unmitigated situation can also result in the Gorouter losing its connection to NATS and all routes being pruned.\n\nWhile a drop in gorouter.total_routes or an increase in gorouter.ms_since_last_registry_update helps to surface that the issue may already be occurring, alerting on gorouter.file_descriptors indicates that such an issue is impending.\n\nThe Gorouter limits the number of file descriptors to 100,000 per job. Once the limit is met, the Gorouter is unable to establish any new connections.\n\nTo reduce the risk of DDoS attacks, Pivotal recommends doing one or both of the following:\n\nWithin PAS, set Maximum connections per back end to define how many requests can be routed to any particular app instance. This prevents a single app from using all Gorouter connections. The value specified should be determined by the operator based on the use cases for that foundation. For example, Pivotal sets the number of connections to 500 for Pivotal Web Services.\nAdd rate limiting at the load balancer level.",
+    "targetInfo": $config.pasGoRouterFileDescriptors.targetInfo
+  }

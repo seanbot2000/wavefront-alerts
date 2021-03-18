@@ -1,0 +1,17 @@
+{
+    "severity": $config.wfHighRateHostIds.severity,
+    "minutes": $config.wfHighRateHostIds.minutes,
+    "name": "High rate of host IDs observed",
+    "target": $config.wfHighRateHostIds.target,
+    "tags": {
+        $config.wfHighRateHostIds.customerTags
+    },
+    "metricsUsed": [
+      "~metric.new_host_ids"
+    ],
+    "condition": "(mavg(10m, cs(\"~metric.new_host_ids\")) / 60) > 50",
+    "displayExpression": "mavg(10m, cs(\"~metric.new_host_ids\")) / 60",
+    "resolveAfterMinutes": $config.wfHighRateHostIds.resolveAfterMinutes,
+    "additionalInformation": "Each data value represents the average number of new host (source) IDs reported to Wavefront over the last 10 minutes. The alert is triggered when your tenant is consistently reporting a high rate of new host IDs to Wavefront. Consider using Wavefront Spy or Wavefront Top to investigate your ingested data. See the Wavefront Documentation for details.",
+    "targetInfo": $config.wfHighRateHostIds.targetInfo
+  }

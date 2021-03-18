@@ -1,0 +1,25 @@
+{
+    "minutes": $config.pasBbsRunningAppsRateChange.minutes,
+    "name": "PAS BBS Running App Instances Rate of Change",
+    "tags": {
+        $config.pasBbsRunningAppsRateChange.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.LRPsRunning.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "(mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)) - lag(1h, mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)))) / mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)) * 100 <= $config.pasBbsRunningAppsRateChange.conditions.warn",
+      "severe": "(mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)) - lag(1h, mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)))) / mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)) * 100 <= $config.pasBbsRunningAppsRateChange.conditions.severe"
+    },
+    "targets": {
+      "warn": "target:CZI4MQsRVpoO625A",
+      "severe": "target:yyZomPfVUlDbXksE"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "(mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)) - lag(1h, mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)))) / mavg(1h,ts(pcf.bbs.LRPsRunning.Metric)) * 100",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "DYNAMIC ALERT: NEGATIVE 10 is a placeholder.\nRate of change in the average number of app instances being started or stopped on the platform. It is derived from bbs.LRPsRunning and represents the total number of LRP instances that are running on Diego Cells.\n\nUse: This Delta reflects a DOWNWARD trend for app instances started or stopped. It helps to provide a picture of the overall (lack of) growth trend of the environment for capacity planning. You may want to alert on delta values outside of an expected range.",
+    "targetInfo": $config.pasBbsRunningAppsRateChange.targetInfo
+  }

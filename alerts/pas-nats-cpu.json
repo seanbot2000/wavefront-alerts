@@ -1,0 +1,20 @@
+{
+    "severity": $config.pasNatsCpu.severity,
+    "minutes": $config.pasNatsCpu.minutes,
+    "name": "PCF Nats CPU High",
+    "target": $config.pasNatsCpu.target,
+    "tags": {
+      $config.pasNatsCpu.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "vsphere.vm.cpu.used.summation"
+    ],
+    "condition": "ts(vsphere.vm.cpu.used.summation, instance_group=\"nats\", foundation=\"$config.foundation\") > 10000",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(vsphere.vm.cpu.used.summation, instance_group=\"nats\", foundation=\"$config.foundation\") > 10000",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasNatsCpu.resolveAfterMinutes,
+    "additionalInformation": "",
+    "targetInfo": $config.pasNatsCpu.targetInfo
+  }

@@ -1,0 +1,21 @@
+{
+    "minutes": $config.pasAuctioneerLrpFailed.minutes,
+    "name": "PAS Auctioneer LRP Auctions Failed",
+    "tags": {
+        $config.pasAuctioneerLrpFailed.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.auctioneer.AuctioneerLRPAuctionsFailed.delta"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.auctioneer.AuctioneerLRPAuctionsFailed.delta) > $config.pasAuctioneerLrpFailed.warn",
+      "severe": "ts(pcf.auctioneer.AuctioneerLRPAuctionsFailed.delta) > $config.pasAuctioneerLrpFailed.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.auctioneer.AuctioneerLRPAuctionsFailed.delta)",
+    "resolveAfterMinutes": $config.pasAuctioneerLrpFailed.resolveAfterMinutes,
+    "additionalInformation": "The number of Long Running Process (LRP) instances that the Auctioneer failed to place on Diego Cells.  This metric can indicate that PAS is out of container space or that there is a lack of resources within your environment. This indicator also increases when the LRP is requesting an isolation segment, volume drivers, or a stack that is unavailable, either not deployed or lacking sufficient resources to accept the work.\nThis metric is emitted on event, and therefore gaps in receipt of this metric can be normal during periods of no app instances being scheduled.\nThis error is most common due to capacity issues. For example, if Diego Cells do not have enough resources, or if Diego Cells are going back and forth between a healthy and unhealthy state.\n\n1.\tTo best determine the root cause, examine the Auctioneer logs. Depending on the specific error and resource constraint, you may also find a failure reason in the Cloud Controller (CC) API.\n2.\tInvestigate the health of your Diego Cells to determine if they are the resource type causing the problem.\n3.\tConsider scaling additional Diego Cells using Ops Manager.\n4.\tIf scaling Diego Cells does not solve the problem, pull Diego Brain logs and BBS node logs and contact Pivotal Support telling them that LRP auctions are failing.",
+    "targetInfo": $config.pasAuctioneerLrpFailed.targetInfo
+  }

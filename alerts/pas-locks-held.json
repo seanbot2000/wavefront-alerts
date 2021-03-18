@@ -1,0 +1,19 @@
+{
+    "severity": $config.pasLocksHeld.severity,
+    "minutes": $config.pasLocksHeld.minutes,
+    "name": "PAS Locks Held",
+    "target": $config.pasLocksHeld.target,
+    "tags": {
+        $config.pasLocksHeld.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.locket.ActiveLocks.Metric"
+    ],
+    "condition": "sum(ts(pcf.locket.ActiveLocks.Metric),foundation)!=$config.pasLocksHeld.condition",
+    "conditionQBEnabled": false,
+    "displayExpression": "sum(ts(pcf.locket.ActiveLocks.Metric),foundation)",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "Whether a BBS instance holds the expected BBS lock (in Locket). 1 means the active BBS server holds the lock, and 0 means the lock was lost.\nThis metric is complimentary to Active Locks, and it offers a BBS-level version of the Locket metrics. Although it is emitted per BBS instance, only 1 active lock is held by BBS. Therefore, the expected value is 1. The metric may occasionally be 0 when the BBS instances are performing a leader transition, but a prolonged value of 0 indicates an issue with BBS.\n\n1.\tRun monit status on the Diego database VM to check for failing processes.\n2.\tIf there are no failing processes, then review the logs for BBS. \no\tA healthy BBS shows obvious activity around starting or claiming LRPs.\no\tAn unhealthy BBS leads to the Auctioneer showing minimal or no activity. The BBS sends work to the Auctioneer.\n3.\tIf you are unable to resolve the issue, pull logs from the Diego BBS, which include the Locket service component logs, and contact Pivotal Support.",
+    "targetInfo": $config.pasLocksHeld.targetInfo
+  }

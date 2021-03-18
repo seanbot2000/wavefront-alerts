@@ -1,0 +1,27 @@
+{
+    "minutes": $config.pasMetricsFlow.minutes,
+    "name": "Prod PCF metrics have stopped flowing!",
+    "tags": {
+      $config.pasMetricsFlow.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "~proxy.points.2878.received"
+    ],
+    "enablePDIncidentBySeries": false,
+    "condition": "",
+    "conditions": {
+      "warn": "max(sum(rate(ts(~proxy.points.2878.received, source=\"*prod*\" and not source=\"olanonprod\" and not source=\"olasandbox\")), sources), sources) <= $config.pasMetricsFlow.conditions.warn",
+      "severe": "max(sum(rate(ts(~proxy.points.2878.received, source=\"*prod*\" and not source=\"olanonprod\" and not source=\"olasandbox\")), sources), sources) <= $config.pasMetricsFlow.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasMetricsFlow.targets.warn,
+      "severe": $config.pasMetricsFlow.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "max(sum(rate(ts(~proxy.points.2878.received, source=\"*prod*\" and not source=\"olanonprod\" and not source=\"olasandbox\")), sources), sources)",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasMetricsFlow.resolveAfterMinutes,
+    "additionalInformation": "",
+    "targetInfo": $config.pasMetricsFlow.targetInfo
+  }

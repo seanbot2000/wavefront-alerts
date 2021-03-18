@@ -1,0 +1,26 @@
+{
+    "minutes": $config.pasGoRouterLastRoute.minutes,
+    "name": "PAS Gorouter Time Since Last Route Register Received",
+    "tags": {
+      $config.pasGoRouterLastRoute.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.gorouter.ms_since_last_registry_update.ms"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.gorouter.ms_since_last_registry_update.ms, foundation=\"$config.foundation\") > 30000",
+      "severe": "ts(pcf.gorouter.ms_since_last_registry_update.ms, foundation=\"$config.foundation\") > 50000"
+    },
+    "targets": {
+      "warn": $config.pasGoRouterLastRoute.targets.warn,
+      "severe": $config.pasGoRouterLastRoute.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.gorouter.ms_since_last_registry_update.ms, foundation=\"$config.foundation\")",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasGoRouterLastRoute.resolveAfterMinutes,
+    "additionalInformation": "Time since the last route register was received, emitted per Gorouter instance. Indicates if routes are not being registered to apps correctly.\nRed critical: > 30 sec\nACTIONS: \nSearch the Gorouter and Route Emitter logs for connection issues to NATS.\nCheck the BOSH logs to see if the NATS, Gorouter, or Route Emitter VMs are failing.\nLook more broadly at the health of all VMs, particularly Diego-related VMs.\nIf problems persist, pull the Gorouter and Route Emitter logs and contact Pivotal Support to say there are consistently long delays in route registry.",
+    "targetInfo": $config.pasGoRouterLastRoute.targetInfo
+  }

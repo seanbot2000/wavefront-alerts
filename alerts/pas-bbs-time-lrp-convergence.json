@@ -1,0 +1,21 @@
+{
+    "minutes": $config.pasBbsTimeLrpConvergence.minutes,
+    "name": "PAS BBS Time to Run LRP Convergence",
+    "tags": {
+      $config.pasBbsTimeLrpConvergence.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.ConvergenceLRPDuration.nanos"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.bbs.ConvergenceLRPDuration.nanos)/1000000000 > $config.pasBbsTimeLrpConvergence.conditions.warn",
+      "severe": "ts(pcf.bbs.ConvergenceLRPDuration.nanos)/1000000000 > $config.pasBbsTimeLrpConvergence.conditions.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.bbs.ConvergenceLRPDuration.nanos)/1000000000",
+    "resolveAfterMinutes": $config.pasBbsTimeLrpConvergence.resolveAfterMinutes,
+    "additionalInformation": "Time that the BBS took to run its LRP convergence pass.  If the convergence run begins taking too long, apps or Tasks may be crashing without restarting. This symptom can also indicate loss of connectivity to the BBS database.\n1.\tCheck BBS logs for errors.\n2.\tTry vertically scaling the BBS VM resources up. For example, add more CPUs or memory depending on its system.cpu/system.memory metrics.\n3.\tConsider vertically scaling the PAS backing database, if system.cpu and system.memory metrics for the database instances are high.\n4.\tIf that does not solve the issue, pull the BBS logs and contact Pivotal Support for additional troubleshooting.",
+    "targetInfo": $config.pasBbsTimeLrpConvergence.targetInfo
+  }

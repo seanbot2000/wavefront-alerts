@@ -1,0 +1,25 @@
+{
+    "minutes": $config.pasGorouterSingleCpuHigh.minutes,
+    "name": "Single GoRouter Average CPU Load High",
+    "tags": {
+        $config.pasGorouterSingleCpuHigh.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.system_metrics_agent.system_cpu_user.Percent"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\") > $config.pasGorouterSingleCpuHigh.conditions.warn",
+      "severe": "ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\") > $config.pasGorouterSingleCpuHigh.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasGorouterSingleCpuHigh.targets.warn,
+      "severe": $config.pasGorouterSingleCpuHigh.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.pasGorouterSingleCpuHigh.targetInfo
+  }

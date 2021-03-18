@@ -1,0 +1,21 @@
+{
+    "severity": $config.pasCliPush.severity,
+    "minutes": $config.pasCliLogin.minutes,
+    "name": "PCF CLI Health (cf push)",
+    "target": "",
+    "tags": {
+      $config.pasCliLogin.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.cliCommand.push.Metric"
+    ],
+    "condition": "ts(\"pcf.healthwatch.health.check.cliCommand.push.Metric\", deployment=\"$config.pasCliLogin.condition.deployment\") != 1",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.healthwatch.health.check.cliCommand.push.Metric\", deployment=\"$config.pasCliLogin.condition.deployment\")",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasCliLogin.resolveAfterMinutes,
+    "additionalInformation": "All CLI alerts are aggregated behind https://longboard.wavefront.com/alerts/1610508280001",
+    "notificationResendFrequencyMinutes": $config.pasCliLogin.notificationResendFrequencyMinutes,
+    "targetInfo": $config.pasCliLogin.targetInfo
+  }

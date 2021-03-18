@@ -1,0 +1,23 @@
+{
+    "minutes": $config.pasGoRouterBadGateway.minutes,
+    "name": "PAS Gorouter 502 Bad Gateway",
+    "tags": {
+      $config.pasGoRouterBadGateway.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "condition": "",
+    "conditions": {
+      "warn": "if(hour(\"US/Central\") > 23 or hour (\"US/Central\") < 1, 0, avg(ts(\"pcf.gorouter.bad_gateways.delta\", foundation=\"$config.foundation\"))) > $config.pasGoRouterBadGateway.thresholds.warn",
+      "severe": "if(hour(\"US/Central\") > 23 or hour (\"US/Central\") < 1, 0, avg(ts(\"pcf.gorouter.bad_gateways.delta\", foundation=\"$config.foundation\"))) > $config.pasGoRouterBadGateway.thresholds.severe"
+    },
+    "targets": {
+      "warn": $config.pasGoRouterBadGateway.targets.warn,
+      "severe": $config.pasGoRouterBadGateway.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "if(hour(\"US/Central\") > 23 or hour (\"US/Central\") < 1, 0, avg(ts(\"pcf.gorouter.bad_gateways.delta\", foundation=\"$config.foundation\")))",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasGoRouterBadGateway.resolveAfterMinutes,
+    "additionalInformation": "The number of bad gateways, or 502 responses, from the Gorouter itself, emitted per Gorouter instance.\nThe Gorouter emits a 502 bad gateway error when it has a route in the routing table and, in attempting to make a connection to the back end, finds that the back end does not exist.\n\nUse: Indicates that route tables might be stale. Stale routing tables suggest an issue in the route register management plane, which indicates that something has likely changed with the locations of the containers. Always investigate unexpected increases in this metric.\nACTIONS: \nCheck the Gorouter and Route Emitter logs to see if they are experiencing issues when connecting to NATS.\nCheck the BOSH logs to see if the NATS, Gorouter, or Route Emitter VMs are failing.\nLook broadly at the health of all VMs, particularly Diego-related VMs.\nIf problems persist, pull Gorouter and Route Emitter logs and contact Pivotal Support to say there has been an unusual increase in Gorouter bad gateway responses.\n\n(!) First inspect logs for network issues and indications of misbehaving backends.\n(!) If it appears that the Gorouter needs to scale due to ongoing traffic congestion, do not scale on the latency metric alone. You should also look at the CPU utilization of the Gorouter VMs and keep it within a maximum 60-70% range.\n(!) Resolve high utilization by scaling the Gorouter.",
+    "targetInfo": $config.pasGoRouterBadGateway.targetInfo
+  }

@@ -1,0 +1,27 @@
+{
+    "minutes": $config.pasGorouterAllCpuHigh.minutes,
+    "name": "All GoRouter Average CPU Load High",
+    "tags": {
+        $config.pasGorouterAllCpuHigh.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.system_metrics_agent.system_cpu_user.Percent"
+    ],
+    "condition": "",
+    "conditions": {
+      "smoke": "avg(ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\"), deployment) > $config.pasGorouterAllCpuHigh.conditions.smoke",
+      "warn": "avg(ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\"), deployment) > $config.pasGorouterAllCpuHigh.conditions.warn",
+      "severe": "avg(ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\"), deployment) > $config.pasGorouterAllCpuHigh.conditions.severe"
+    },
+    "targets": {
+      "smoke": $config.pasGorouterAllCpuHigh.targets.smoke,
+      "warn": $config.pasGorouterAllCpuHigh.targets.warn,
+      "severe": $config.pasGorouterAllCpuHigh.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "avg(ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*router*\"), deployment)",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.pasGorouterAllCpuHigh.targetInfo
+  }

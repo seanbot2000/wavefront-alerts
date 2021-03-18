@@ -1,0 +1,21 @@
+{
+    "minutes": $config.pasAuctioneerTimeDiegoState.minutes,
+    "name": "PAS Auctioneer Time to Fetch Diego Cell State",
+    "tags": {
+        $config.pasAuctioneerTimeDiegoState.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.auctioneer.AuctioneerFetchStatesDuration.nanos"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(\"pcf.auctioneer.AuctioneerFetchStatesDuration.nanos\")/1000000000 > $config.pasAuctioneerTimeDiegoState.conditions.warn",
+      "severe": "ts(\"pcf.auctioneer.AuctioneerFetchStatesDuration.nanos\")/1000000000 > $config.pasAuctioneerTimeDiegoState.conditions.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.auctioneer.AuctioneerFetchStatesDuration.nanos\")/1000000000",
+    "resolveAfterMinutes": $config.pasAuctioneerTimeDiegoState.resolveAfterMinutes,
+    "additionalInformation": "Time in ns that the Auctioneer took to fetch state from all the Diego Cells when running its auction.  Indicates how the Diego Cells themselves are performing. Alerting on this metric helps alert that app staging requests to Diego may be failing.\n1.\tCheck the health of the Diego Cells by reviewing the logs and looking for errors.\n2.\tReview IaaS console metrics.\n3.\tInspect the Auctioneer logs to determine if one or more Diego Cells is taking significantly longer to fetch state than other Diego Cells. Relevant log lines have wording like `fetched Diego Cell state`. \nPull Diego Brain logs, Diego Cell logs, and Auctioneer logs and contact Pivotal Support telling them that fetching Diego Cell states is taking too long.",
+    "targetInfo": $config.pasAuctioneerTimeDiegoState.targetInfo
+  }

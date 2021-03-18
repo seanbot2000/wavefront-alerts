@@ -1,0 +1,20 @@
+{
+    "severity": $config.pcfCfStop.severity,
+    "minutes": $config.pcfCfStop.minutes,
+    "name": "PCF CLI Health (cf stop)",
+    "target": "",
+    "tags": {
+      $config.pcfCfStop.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.cliCommand.stop.Metric"
+    ],
+    "condition": "ts(\"pcf.healthwatch.health.check.cliCommand.stop.Metric\", deployment=\"$config.pcfCfStop.condition.deployment\") != 1",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.healthwatch.health.check.cliCommand.stop.Metric\", deployment=\"$config.pcfCfStop.condition.deployment\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "All CLI alerts are aggregated behind https://longboard.wavefront.com/alerts/1610508280001",
+    "notificationResendFrequencyMinutes": $config.pcfCfStop.notificationResendFrequencyMinutes,
+    "targetInfo":  $config.pcfCfStop.targetInfo
+  }

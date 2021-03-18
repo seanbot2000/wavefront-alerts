@@ -1,0 +1,17 @@
+{
+    "severity": $config.wfHighRateMetricIds.severity,
+    "minutes": $config.wfHighRateMetricIds.minutes,
+    "name": "High rate of metric IDs observed",
+    "target": $config.wfHighRateMetricIds.target,
+    "tags": {
+        $config.wfHighRateMetricIds.customerTags
+    },
+    "metricsUsed": [
+      "~metric.new_metric_ids"
+    ],
+    "condition": "(mavg(10m, cs(\"~metric.new_metric_ids\")) / 60) > 50",
+    "displayExpression": "mavg(10m, cs(\"~metric.new_metric_ids\")) / 60",
+    "resolveAfterMinutes": $config.wfHighRateMetricIds.resolveAfterMinutes,
+    "additionalInformation": "Each data value represents the average number of new metric IDs reported to Wavefront over the last 10 minutes. This alert is triggered when your tenant is consistently reporting a high rate of new metric IDs to Wavefront. Consider using Wavefront Spy or Wavefront Top to investigate your ingested data. See the Wavefront Documentation for details.",
+    "targetInfo": $config.wfHighRateMetricIds.targetInfo
+  }

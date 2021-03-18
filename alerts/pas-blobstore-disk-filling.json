@@ -1,0 +1,24 @@
+{
+    "minutes": $config.pasBlobstoreDiskFilling.minutes,
+    "name": "Blobstore Disk Filling Up",
+    "tags": {
+        $config.pasBlobstoreDiskFilling.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.system_metrics_agent.system_disk_persistent_percent.Percent"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "last(ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, job=\"nfs_server\")) > $config.pasBlobstoreDiskFilling.conditions.warn",
+      "severe": "last(ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, job=\"nfs_server\")) > $config.pasBlobstoreDiskFilling.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasBlobstoreDiskFilling.targets.warn,
+      "severe": $config.pasBlobstoreDiskFilling.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "last(ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, job=\"nfs_server\"))",
+    "displayExpressionQBEnabled": false,
+    "targetInfo": $config.pasBlobstoreDiskFilling.targetInfo
+  }

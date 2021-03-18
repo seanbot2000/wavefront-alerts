@@ -1,0 +1,19 @@
+{
+    "severity": $config.pcfAutoscalerFailure.severity,
+    "minutes": $config.pcfAutoscalerFailure.minutes,
+    "name": "Autoscale Failure",
+    "target": $config.pcfAutoscalerFailure.target,
+    "tags": {
+      $config.pcfAutoscalerFailure.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [],
+    "condition": "ts(tracing.root.derived.platformvalidator-sandbox.platform-monitoring-*.validate-autoscale.error.count) > 1",
+    "conditionQBEnabled": false,
+    "displayExpression": "",
+    "displayExpressionQBEnabled": true,
+    "displayExpressionQBSerialization": "{\"_v\":1,\"metric\":\"\",\"filters\":[[],\"and\"],\"functions\":[]}",
+    "resolveAfterMinutes": $config.pcfAutoscalerFailure.resolveAfterMinutes,
+    "additionalInformation": "",
+    "targetInfo": $config.pcfAutoscalerFailure.targetInfo
+  }

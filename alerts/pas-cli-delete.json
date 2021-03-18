@@ -1,0 +1,20 @@
+{
+    "severity": $config.pasCliDelete.severity,
+    "minutes": $config.pasCliDelete.minutes,
+    "name": "PCF CLI Health (cf delete)",
+    "target": "",
+    "tags": {
+        $config.pasCliDelete.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.cliCommand.delete.Metric"
+    ],
+    "condition": "ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\", deployment=\"cf-217185bb5045894f23f7\") != 1",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\", deployment=\"cf-217185bb5045894f23f7\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "All CLI alerts are aggregated behind https://longboard.wavefront.com/alerts/1610508280001",
+    "notificationResendFrequencyMinutes": $config.pasCliDelete.notificationResendFrequencyMinutes,
+    "targetInfo": $config.pasCliDelete.targetInfo
+  }

@@ -1,0 +1,25 @@
+{
+    "severity": $config.pcfCfDelete.severity,
+    "minutes": $config.pcfCfDelete.minutes,
+    "name": "PCF CLI Health (cf delete)",
+    "target": $config.pcfCfDelete.target,
+    "tags": {
+      "customerTags": [
+        "api",
+        "cli",
+        "garmin",
+        "pcf"
+      ]
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.cliCommand.delete.Metric"
+    ],
+    "condition": "ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\", deployment=\"$config.pcfCfDelete.condition.deployment\") != 1",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\", deployment=\"$config.pcfCfDelete.condition.deployment\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "All CLI alerts are aggregated behind https://longboard.wavefront.com/alerts/1610508280001",
+    "notificationResendFrequencyMinutes": $config.pcfCfDelete.notificationResendFrequencyMinutes,
+    "targetInfo": $config.pcfCfDelete.targetInfo
+  }

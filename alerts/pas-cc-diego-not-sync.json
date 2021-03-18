@@ -1,0 +1,20 @@
+{
+    "minutes": $config.pasCcDiegoNotSync.minutes,
+    "name": "PAS Cloud Controller and Diego Not in Sync",
+    "tags": {
+        $config.pasCcDiegoNotSync.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.Domain.cf-apps.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "mmin(5m, ts(pcf.bbs.Domain.cf-apps.Metric)) < $config.pasCcDiegoNotSync.conditions.warn"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "mmin(5m, ts(pcf.bbs.Domain.cf-apps.Metric))",
+    "resolveAfterMinutes": $config.pasCcDiegoNotSync.resolveAfterMinutes,
+    "additionalInformation": "Indicates if the cf-apps Domain is up-to-date, meaning that PAS app requests from Cloud Controller are synchronized to bbs.LRPsDesired (Diego-desired AIs) for execution. \n•\t1 means cf-apps Domain is up-to-date\n•\tNo data received means cf-apps Domain is not up-to-date: \nIf the cf-apps Domain does not stay up-to-date, changes requested in the Cloud Controller are not guaranteed to propagate throughout the system. If the Cloud Controller and Diego are out of sync, then apps running could vary from those desired.\n1.\tCheck the BBS and Clock Global (Cloud Controller clock) logs.\n2.\tIf the problem continues, pull the BBS logs and Clock Global (Cloud Controller clock) logs and contact Pivotal Support to say that the cf-apps domain is not being kept fresh.",
+    "targetInfo": $config.pasCcDiegoNotSync.targetInfo
+  }

@@ -1,0 +1,25 @@
+{
+    "minutes": $config.pasDiegoCellSingleCpuHigh.minutes,
+    "name": "Single Diego Cells Average CPU Load High",
+    "tags": {
+        $config.pasDiegoCellSingleCpuHigh.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.system_metrics_agent.system_cpu_user.Percent"
+    ],
+    "enablePDIncidentBySeries": false,
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*diego_cell*\") > $config.pasDiegoCellSingleCpuHigh.conditions.warn",
+      "severe": "ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*diego_cell*\") > $config.pasDiegoCellSingleCpuHigh.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasDiegoCellSingleCpuHigh.targets.warn
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.system_metrics_agent.system_cpu_user.Percent, job=\"*diego_cell*\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.pasDiegoCellSingleCpuHigh.targetInfo
+  }

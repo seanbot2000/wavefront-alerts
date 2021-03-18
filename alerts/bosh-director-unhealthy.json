@@ -1,0 +1,20 @@
+{
+    "severity": $config.boshDirectorUnhealthy.severity,
+    "minutes": $config.boshDirectorUnhealthy.minutes,
+    "name": "Bosh Director Unhealthy",
+    "target": $config.boshDirectorUnhealthy.target,
+    "tags": {
+        $config.boshDirectorUnhealthy.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.bosh.director.success.Metric"
+    ],
+    "enablePDIncidentBySeries": false,
+    "condition": "ts(\"pcf.healthwatch.health.check.bosh.director.success.Metric\")!=1",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.healthwatch.health.check.bosh.director.success.Metric\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.boshDirectorUnhealthy.targetInfo
+  }

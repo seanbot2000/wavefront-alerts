@@ -1,0 +1,26 @@
+{
+  "minutes": $config.pasDiegoCellReplication.minutes,
+  "name": "PAS Diego Cell Replication Bulk Sync Duration",
+  "tags": {
+    $config.pasDiegoCellReplication.customerTags
+  },
+  "alertType": "THRESHOLD",
+  "metricsUsed": [
+    "pcf.rep.RepBulkSyncDuration.nanos"
+  ],
+  "condition": "",
+  "conditions": {
+    "warn": "percentile(50,(ts(pcf.rep.RepBulkSyncDuration.nanos, foundation=\"$config.foundation\")/1000000),deployment) > $config.thresholds.warn",
+    "severe": "percentile(50,(ts(pcf.rep.RepBulkSyncDuration.nanos, foundation=\"$config.foundation\")/1000000),deployment) > $config.thresholds.severe"
+  },
+  "targets": {
+    "warn": $config.pasDiegoCellReplication.targets.warn,
+    "severe": $config.pasDiegoCellReplication.targets.severe
+  },
+  "conditionQBEnabled": false,
+  "displayExpression": "percentile(50,(ts(pcf.rep.RepBulkSyncDuration.nanos, foundation=\"$config.foundation\")/1000000),deployment)",
+  "displayExpressionQBEnabled": false,
+  "resolveAfterMinutes": 5,
+  "additionalInformation": "Time that the Diego Cell Rep took to sync the ActualLRPs that it claimed with its actual garden containers.  Sync times that are too high can indicate issues with the BBS.\nYellow warning: ≥ 300 ms\nRed critical: ≥ 500 ms \nACTION:\n(!) Investigate BBS logs for faults and errors.\n(!) If a particular Diego Cell or Diego Cells appear problematic, pull logs for the Diego Cells and the BBS logs before contacting Pivotal Support.",
+  "targetInfo": $config.pasDiegoCellReplication.targetInfo
+}

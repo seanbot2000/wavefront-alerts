@@ -1,0 +1,22 @@
+{
+    "severity": $config.pasUnhealthyVm.severity,
+    "minutes": $config.pasUnhealthyVm.minutes,
+    "name": "Single VM Unhealthy",
+    "target": $config.pasUnhealthyVm.target,
+    "tags": {
+      $config.pasUnhealthyVm.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.bosh-system-metrics-forwarder.system.healthy.b",
+      "ignore.backup.maintenance.window"
+    ],
+    "enablePDIncidentBySeries": false,
+    "condition": "if(ts(ignore.backup.maintenance.window) = 0, 1, ts(\"pcf.bosh-system-metrics-forwarder.system.healthy.b\", foundation=\"$config.foundation\" and not job=\"bosh-health-check\")) != 1",
+    "conditionQBEnabled": false,
+    "displayExpression": "lowpass(5m, ts(\"pcf.bosh-system-metrics-forwarder.system.healthy.b\", foundation=\"$config.foundation\" and not job=\"bosh-health-check\"))",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasUnhealthyVm.resolveAfterMinutes,
+    "additionalInformation": "This alert is being set up to track issues related to case 266073 and mitigate early failures while RCA is being analyzed",
+    "targetInfo": $config.pasUnhealthyVm.targetInfo
+  }

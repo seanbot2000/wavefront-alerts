@@ -1,0 +1,24 @@
+{
+    "minutes": $config.pcfBlobstoreDisk.minutes,
+    "name": "Blobstore Disk Filling Up",
+    "tags": {
+      $config.pcfBlobstoreDisk.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.system_metrics_agent.system_disk_persistent_percent.Percent"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "last(ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, job=\"nfs_server\")) > 80",
+      "severe": "last(ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, job=\"nfs_server\")) > 90"
+    },
+    "targets": {
+      "warn": $config.pcfBlobstoreDisk.targets.warn,
+      "severe": $config.pcfBlobstoreDisk.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "last(ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, job=\"nfs_server\"))",
+    "displayExpressionQBEnabled": false,
+    "targetInfo":  $config.pcfBlobstoreDisk.targetInfo
+  }

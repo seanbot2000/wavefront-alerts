@@ -1,0 +1,21 @@
+{
+    "minutes": $config.pasDiegoCellContainerCap.minutes,
+    "name": "PAS Diego Cell Container Capacity",
+    "tags": {
+        $config.pasDiegoCellContainerCap.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.rep.CapacityTotalContainers.Metric",
+      "pcf.rep.CapacityRemainingContainers.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "smoke": "avg(ts(pcf.rep.CapacityRemainingContainers.Metric)/ts(pcf.rep.CapacityTotalContainers.Metric)*100,sources, zone, system_domain,job,ip,deployment) < $config.pasDiegoCellContainerCap.smoke"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "avg(ts(pcf.rep.CapacityRemainingContainers.Metric)/ts(pcf.rep.CapacityTotalContainers.Metric)*100,sources, zone, system_domain,job,ip,deployment)",
+    "resolveAfterMinutes": $config.pasDiegoCellContainerCap.resolveAfterMinutes,
+    "additionalInformation": "Percentage of remaining container capacity for a given Diego Cell. Monitor this derived metric across all Diego Cells in a deployment.\nThe metric rep.CapacityRemainingContainers indicates the remaining number of containers this Diego Cell can host.\nThe metric rep.CapacityTotalContainer indicates the total number of containers this Diego Cell can host.\nRecommended threshold: < avg(35%)",
+    "targetInfo": $config.pasDiegoCellContainerCap.targetInfo
+  }

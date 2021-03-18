@@ -1,0 +1,36 @@
+resources:
+- name: wf-repo
+  type: git
+  source:
+    branch: main
+    uri: https://github.com/seanbot2000/concourse-wavefront-template-pipeline.git
+
+jobs:
+- name: wavefront-job
+  plan:
+  - get: wf-repo
+    trigger: true
+  - task: wavefront-task
+    config:
+      platform: linux
+      inputs:
+      - name: wf-repo
+      image_resource:
+        type: docker-image
+        source:
+          repository: alpine
+          tag: edge
+      run:
+        path: /bin/sh
+        args:
+        - -c
+        - |
+          apk update 
+          apk add jq 
+          apk add curl
+          apk add bash
+          cd wf-repo
+          chmod +x ./scripts/jq.sh 
+          chmod +x ./scripts/wavefront.sh 
+          ./scripts/jq.sh 
+          ./scripts/wavefront.sh ((wavefront-api-token))

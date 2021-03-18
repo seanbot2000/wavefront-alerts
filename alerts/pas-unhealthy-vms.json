@@ -1,0 +1,21 @@
+{
+    "severity": $config.pasUnhealthyVms.severity,
+    "minutes": $config.pasUnhealthyVms.minutes,
+    "name": "Multiple VMs Unhealthy",
+    "target": $config.pasUnhealthyVms.target,
+    "tags": {
+      $config.pasUnhealthyVms.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.bosh-system-metrics-forwarder.system.healthy.b",
+      "ignore.backup.maintenance.window"
+    ],
+    "condition": "if(ts(ignore.backup.maintenance.window) = 0, 0, sum(if(ts(\"pcf.bosh-system-metrics-forwarder.system.healthy.b\", foundation=\"$config.foundation\" and not job=\"bosh-health-check\")=0, 1, 0))) >=2",
+    "conditionQBEnabled": false,
+    "displayExpression": "sum(if(ts(\"pcf.bosh-system-metrics-forwarder.system.healthy.b\", foundation=\"$config.foundation\" and not job=\"bosh-health-check\")=0, 1, 0))",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasUnhealthyVms.resolveAfterMinutes,
+    "additionalInformation": "",
+    "targetInfo": $config.pasUnhealthyVms.targetInfo
+  }

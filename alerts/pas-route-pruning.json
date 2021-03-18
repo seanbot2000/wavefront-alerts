@@ -1,0 +1,25 @@
+
+{
+    "minutes": $config.pasRoutePruning.minutes,
+    "name": "Too many routes pruned at once! Check Nats!",
+    "tags": {
+      $config.pasRoutePruning.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.gorouter.routes_pruned.delta"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(\"pcf.gorouter.routes_pruned.delta\", foundation=\"$config.foundation\") > $config.pasRoutePruning.conditions.warn",
+      "severe": "ts(\"pcf.gorouter.routes_pruned.delta\", foundation=\"$config.foundation\") > $config.pasRoutePruning.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasRoutePruning.targets.warn,
+      "severe": $config.pasRoutePruning.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.gorouter.routes_pruned.delta\", foundation=\"$config.foundation\")",
+    "displayExpressionQBEnabled": false,
+    "targetInfo": $config.pasRoutePruning.targetInfo
+  }

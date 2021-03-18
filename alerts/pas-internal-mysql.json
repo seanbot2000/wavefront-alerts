@@ -1,0 +1,23 @@
+{
+    "minutes": $config.pasInternalMysql.minutes,
+    "name": "Internal MySQL Down",
+    "tags": {
+      $config.pasInternalMysql.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.container.mysql./mysql/available.boolean"
+    ],
+    "condition": "",
+    "conditions": {
+      "severe": "ts(\"pcf.*mysql./mysql/available.boolean\", foundation=\"$config.foundation\") < 1"
+    },
+    "targets": {
+      "severe": "target:yyZomPfVUlDbXksE,target:PTNWDMcyDFV4n3d8"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(\"pcf.*mysql./mysql/available.boolean\", foundation=\"$config.foundation\")",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasInternalMysql.resolveAfterMinutes,
+    "targetInfo": $config.pasInternalMysql.targetInfo
+  }

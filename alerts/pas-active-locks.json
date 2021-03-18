@@ -1,0 +1,20 @@
+{
+    "minutes": $config.pasActiveLocks.minutes,
+    "name": "PAS Active Locks",
+    "tags": {
+        $config.pasActiveLocks.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.locket.ActiveLocks.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "severe": "ts(pcf.locket.ActiveLocks.Metric) < $config.pasActiveLocks.conditions.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.locket.ActiveLocks.Metric)",
+    "resolveAfterMinutes": $config.pasActiveLocks.resolveAfterMinutes,
+    "additionalInformation": "Total count of how many locks the system components are holding.\n If the ActiveLocks count is not equal to the expected value, there is likely a problem with Diego.\n1.\tRun monit status to inspect for failing processes.\n2.\tIf there are no failing processes, then review the logs for the components using the Locket service: BBS, Auctioneer, TPS Watcher, Routing API, and Clock Global (Cloud Controller clock). Look for indications that only one of each component is active at a time.\n3.\tFocus triage on the BBS first: \no\tA healthy BBS shows obvious activity around starting or claiming LRPs.\no\tAn unhealthy BBS leads to the Auctioneer showing minimal or no activity. The BBS sends work to the Auctioneer.\no\tReference the BBS-level Locket metric bbs.LockHeld. A value of 0 indicates Locket issues at the BBS level. For more information, see Locks Held by BBS.\n4.\tIf the BBS appears healthy, then check the Auctioneer to ensure it is processing auction payloads.\no\tRecent logs for Auctioneer should show all but one of its instances are currently waiting on locks, and the active Auctioneer should show a record of when it last attempted to execute work. This attempt should correspond to app development activity, such as cf push.\no\tReference the Auctioneer-level Locket metric auctioneer.LockHeld. A value of 0 indicates Locket issues at the Auctioneer level. For more information, see Locks Held by Auctioneer.\n5.\tThe TPS Watcher is primarily active when app instances crash. Therefore, if the TPS Watcher is suspected, review the most recent logs.\n6.\tIf you are unable to resolve on-going excessive active locks, pull logs from the Diego BBS and Auctioneer VMs, which includes the Locket service component logs, and contact Pivotal Support.",
+    "targetInfo": $config.pasActiveLocks.targetInfo
+  }

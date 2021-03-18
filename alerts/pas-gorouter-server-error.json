@@ -1,0 +1,20 @@
+{
+    "minutes": $config.pasGorouterServerError.minutes,
+    "name": "PAS Gorouter Server Error",
+    "tags": {
+        $config.pasGorouterServerError.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.gorouter.responses.5xx.delta"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.gorouter.responses.5xx.delta)/5 > $config.pasGorouterServerError.conditions.warn"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.gorouter.responses.5xx.delta)/5",
+    "resolveAfterMinutes": $config.pasGorouterServerError.resolveAfterMinutes,
+    "additionalInformation": "The number of requests completed by the Gorouter VM for HTTP status family 5xx, server errors, emitted per Gorouter instance.\nA repeatedly crashing app is often the cause of a big increase in 5xx responses. However, response issues from apps can also cause an increase in 5xx responses. Always investigate an unexpected increase in this metric.",
+    "targetInfo": $config.pasGorouterServerError.targetInfo
+  }

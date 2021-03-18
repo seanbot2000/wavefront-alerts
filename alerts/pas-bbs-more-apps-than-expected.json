@@ -1,0 +1,20 @@
+{
+    "minutes": $config.pasBbsMoreAppsThanExpected.minutes,
+    "name": "PAS BBS More App Instances Than Expected",
+    "tags": {
+        $config.pasBbsMoreAppsThanExpected.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.LRPsExtra.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "mavg(5m, ts(pcf.bbs.LRPsExtra.Metric)) > $config.pasBbsMoreAppsThanExpected.conditions.warn",
+      "severe": "mavg(5m, ts(pcf.bbs.LRPsExtra.Metric)) > $config.pasBbsMoreAppsThanExpected.conditions.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "mavg(5m, ts(pcf.bbs.LRPsExtra.Metric))",
+    "additionalInformation": "Total number of LRP instances that are no longer desired but still have a BBS record. When Diego wants to add more apps, the BBS sends a request to the Auctioneer to spin up additional LRPs. LRPsExtra is the total number of LRP instances that are no longer desired but still have a BBS record. If Diego has more LRPs running than expected, there may be problems with the BBS.\nDeleting an app with many instances can temporarily spike this metric. However, a sustained spike in bbs.LRPsExtra is unusual and should be investigated.   Frequency: 30 s\n1.\tReview the BBS logs for proper operation or errors, looking for detailed error messages.\n2.\tIf the condition persists, pull the BBS logs and contact Pivotal Support.",
+    "targetInfo": $config.pasBbsMoreAppsThanExpected.targetInfo
+  }

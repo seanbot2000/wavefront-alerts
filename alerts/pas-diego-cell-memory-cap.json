@@ -1,0 +1,24 @@
+{
+    "minutes": $config.pasDiegoCellMemoryCap.minutes,
+    "name": "PAS Diego Cell Memory Capacity",
+    "tags": {
+      $config.pasDiegoCellMemoryCap.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.rep.CapacityTotalMemory.MiB",
+      "pcf.rep.CapacityRemainingMemory.MiB"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "avg(ts(pcf.rep.CapacityRemainingMemory.MiB)/ts(pcf.rep.CapacityTotalMemory.MiB)*100, sources, job, foundation, deployment,ip,product,zone) < $config.pasDiegoCellMemoryCap.conditions.warn",
+      "severe": "avg(ts(pcf.rep.CapacityRemainingMemory.MiB)/ts(pcf.rep.CapacityTotalMemory.MiB)*100, sources, job, foundation, deployment,ip,product,zone) < $config.pasDiegoCellMemoryCap.conditions.severe"
+    },
+    "targets": {},
+    "conditionQBEnabled": false,
+    "displayExpression": "avg(ts(pcf.rep.CapacityRemainingMemory.MiB)/ts(pcf.rep.CapacityTotalMemory.MiB)*100, sources, job, foundation, deployment,ip,product,zone)",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasDiegoCellMemoryCap.resolveAfterMinutes,
+    "additionalInformation": "Percentage of remaining memory capacity for a given Diego Cell. Monitor this derived metric across all Diego Cells in a deployment.\nThe metric rep.CapacityRemainingMemory indicates the remaining amount in MiB of memory available for this Diego Cell to allocate to containers.\nThe metric rep.CapacityTotalMemory indicates the total amount in MiB of memory available for this Diego Cell to allocate to containers.\nRecommended threshold: < avg(35%)",
+    "targetInfo": $config.pasDiegoCellMemoryCap.targetInfo
+  }

@@ -1,0 +1,17 @@
+{
+    "severity": $config.wfHighRateStringIds.severity,
+    "minutes": $config.wfHighRateStringIds.minutes,
+    "name": "High rate of string IDs observed",
+    "target": $config.wfHighRateStringIds.target,
+    "tags": {
+        $config.wfHighRateStringIds.customerTags
+    },
+    "metricsUsed": [
+      "~metric.new_string_ids"
+    ],
+    "condition": "(mavg(10m, cs(\"~metric.new_string_ids\")) / 60) > 100",
+    "displayExpression": "mavg(10m, cs(\"~metric.new_string_ids\")) / 60",
+    "resolveAfterMinutes": $config.wfHighRateStringIds.resolveAfterMinutes,
+    "additionalInformation": "Each data value represents the average number of new string (point tag) IDs reported to Wavefront in the last 10 minutes. This alert is triggered when your tenant is consistently reporting a high rate of new point tags (string IDs) to Wavefront. Consider using Wavefront Spy or Wavefront Top to investigate your ingested data. See the Wavefront Documentation for details.",
+    "targetInfo": $config.wfHighRateStringIds.targetInfo
+  }

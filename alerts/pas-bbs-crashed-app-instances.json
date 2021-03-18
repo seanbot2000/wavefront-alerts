@@ -1,0 +1,25 @@
+{
+    "minutes": $config.pasBbsCrashAppInstances.minutes,
+    "name": "PAS BBS Crashed App Instances Rate of Change",
+    "tags": {
+        $config.pasBbsCrashAppInstances.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.LRPsDesired.Metric",
+      "pcf.bbs.CrashedActualLRPs.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "((lag(1h, mavg(1h, ts(pcf.bbs.CrashedActualLRPs.Metric))) / lag(1h, mavg(1h,ts(pcf.bbs.LRPsDesired.Metric)))) - (mavg(1h, ts(pcf.bbs.CrashedActualLRPs.Metric)) / mavg(1h,ts(pcf.bbs.LRPsDesired.Metric)))) * 100 <= $config.pasBbsCrashAppInstances.conditions.warn",
+      "severe": "((lag(1h, mavg(1h, ts(pcf.bbs.CrashedActualLRPs.Metric))) / lag(1h, mavg(1h,ts(pcf.bbs.LRPsDesired.Metric)))) - (mavg(1h, ts(pcf.bbs.CrashedActualLRPs.Metric)) / mavg(1h,ts(pcf.bbs.LRPsDesired.Metric)))) * 100 <= $config.pasBbsCrashAppInstances.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasBbsCrashAppInstances.targets.warn,
+      "severe": $config.pasBbsCrashAppInstances.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "((lag(1h, mavg(1h, ts(pcf.bbs.CrashedActualLRPs.Metric))) / lag(1h, mavg(1h,ts(pcf.bbs.LRPsDesired.Metric)))) - (mavg(1h, ts(pcf.bbs.CrashedActualLRPs.Metric)) / mavg(1h,ts(pcf.bbs.LRPsDesired.Metric)))) * 100",
+    "displayExpressionQBEnabled": false,
+    "targetInfo":$config.pasBbsCrashAppInstances.targetInfo
+  }

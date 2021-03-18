@@ -1,0 +1,19 @@
+{
+    "severity": $config.pasCanaryAppUptime.severity,
+    "minutes": $config.pasCanaryAppUptime.minutes,
+    "name": "Canary App Uptime",
+    "target": $config.pasCanaryAppUptime.target,
+    "tags": {
+        $config.pasCanaryAppUptime.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.CanaryApp.available.Metric"
+    ],
+    "condition": "ts(pcf.healthwatch.health.check.CanaryApp.available.Metric, deployment=\"cf-217185bb5045894f23f7\")=0",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.healthwatch.health.check.CanaryApp.available.Metric, deployment=\"cf-217185bb5045894f23f7\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "This is used for uptime calculation, not real alerting.",
+    "targetInfo": $config.pasCanaryAppUptime.targetInfo
+  }

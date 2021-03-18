@@ -1,0 +1,19 @@
+{
+    "severity": $config.pcfBlobstoreVmHealth.severity,
+    "minutes": $config.pcfBlobstoreVmHealth.minutes,
+    "name": "Blobstore VM Health",
+    "target": $config.pcfBlobstoreVmHealth.target,
+    "tags": {
+      $config.pcfBlobstoreVmHealth.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "pcf.bosh-system-metrics-forwarder.system.healthy.b"
+    ],
+    "condition": "ts(pcf.bosh-system-metrics-forwarder.system.healthy.b, job=\"nfs_server\")!=1",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.bosh-system-metrics-forwarder.system.healthy.b, job=\"nfs_server\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.pcfBlobstoreVmHealth.targetInfo
+  }

@@ -1,0 +1,26 @@
+{
+    "minutes": $config.pasRouteEmitter.minutes,
+    "name": "PAS Gorouter Route Emitter Latency",
+    "tags": {
+      $config.pasNatsCpu.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "ignore.backup.maintenance.window",
+      "pcf.gorouter.latency.route-emitter.ms"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "if(ts(ignore.backup.maintenance.window) > 0, avg(ts(\"pcf.gorouter.latency.route-emitter.ms\", foundation=\"$config.foundation\"),deployment), 0) >= $config.pasNatsCpu.conditions.warn",
+      "severe": "if(ts(ignore.backup.maintenance.window) > 0, avg(ts(\"pcf.gorouter.latency.route-emitter.ms\", foundation=\"$config.foundation\"),deployment), 0) >= $config.pasNatsCpu.conditions.severe"
+    },
+    "targets": {
+      "warn": $config.pasNatsCpu.targets.warn,
+      "severe": $config.pasNatsCpu.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "if(ts(ignore.backup.maintenance.window) > 0, avg(ts(\"pcf.gorouter.latency.route-emitter.ms\", foundation=\"$config.foundation\"),deployment), 0)",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.pasNatsCpu.targetInfo
+  }

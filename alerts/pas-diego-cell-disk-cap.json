@@ -1,0 +1,24 @@
+{
+    "minutes": $config.pasDiegoCellDiskCap.minutes,
+    "name": "PAS Diego Cell Disk Capacity",
+    "tags": {
+        $config.pasDiegoCellDiskCap.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.rep.CapacityAllocatedDisk.MiB",
+      "pcf.rep.CapacityTotalDisk.MiB"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "avg(ts(pcf.rep.CapacityAllocatedDisk.MiB)/ts(pcf.rep.CapacityTotalDisk.MiB)*100,sources, zone, system_domain,job,ip,deployment) > $config.pasDiegoCellDiskCap.conditions.warn",
+      "severe": "avg(ts(pcf.rep.CapacityAllocatedDisk.MiB)/ts(pcf.rep.CapacityTotalDisk.MiB)*100,sources, zone, system_domain,job,ip,deployment) > $config.pasDiegoCellDiskCap.conditions.severe"
+    },
+    "targets": {},
+    "conditionQBEnabled": false,
+    "displayExpression": "avg(ts(pcf.rep.CapacityAllocatedDisk.MiB)/ts(pcf.rep.CapacityTotalDisk.MiB)*100,sources, zone, system_domain,job,ip,deployment)",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasDiegoCellDiskCap.resolveAfterMinutes,
+    "additionalInformation": "Percentage of remaining disk capacity for a given Diego Cell. Monitor this derived metric across all Diego Cells in a deployment.\nThe metric rep.CapacityRemainingDisk indicates the remaining amount in MiB of disk available for this Diego Cell to allocate to containers.\nThe metric rep.CapacityTotalDisk indicates the total amount in MiB of disk available for this Diego Cell to allocate to containers.\nRecommended threshold: < avg(35%)",
+    "targetInfo": $config.pasDiegoCellDiskCap.targetInfo
+  }

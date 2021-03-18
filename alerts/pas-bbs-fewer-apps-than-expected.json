@@ -1,0 +1,20 @@
+{
+    "minutes": $config.pasBbsFewerAppsThanExpected.minutes,
+    "name": "PAS BBS Fewer App Instances Than Expected",
+    "tags": {
+        $config.pasBbsFewerAppsThanExpected.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.LRPsMissing.Metric"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "mavg(5m, ts(pcf.bbs.LRPsMissing.Metric)) > $config.pasBbsFewerAppsThanExpected.conditions.warn",
+      "severe": "mavg(5m, ts(pcf.bbs.LRPsMissing.Metric)) > $config.pasBbsFewerAppsThanExpected.conditions.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "mavg(5m, ts(pcf.bbs.LRPsMissing.Metric))",
+    "additionalInformation": "Total number of LRP instances that are desired but have no record in the BBS. When Diego wants to add more apps, the BBS sends a request to the Auctioneer to spin up additional LRPs. LRPsMissing is the total number of LRP instances that are desired but have no BBS record.\nIf Diego has less LRP running than expected, there may be problems with the BBS.\n\nAn app push with many instances can temporarily spike this metric. However, a sustained spike in bbs.LRPsMissing is unusual and should be investigated.\n  Frequency: 30 s\n1.\tReview the BBS logs for proper operation or errors, looking for detailed error messages.\n2.\tIf the condition persists, pull the BBS logs and contact Pivotal Support.",
+    "targetInfo": $config.pasBbsFewerAppsThanExpected.targetInfo
+  }

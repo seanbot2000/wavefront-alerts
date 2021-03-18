@@ -1,0 +1,32 @@
+{
+    "minutes": $config.pasCliFunctions.minutes,
+    "name": "2 or more PCF CLI functions inoperable ($config.foundation)",
+    "tags": {
+      $config.pasCliFunctions.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.healthwatch.health.check.cliCommand.stop.Metric",
+      "pcf.healthwatch.health.check.cliCommand.delete.Metric",
+      "pcf.healthwatch.health.check.cliCommand.start.Metric",
+      "pcf.healthwatch.health.check.cliCommand.logs.Metric",
+      "pcf.healthwatch.health.check.cliCommand.login.Metric",
+      "ignore.backup.maintenance.window",
+      "pcf.healthwatch.health.check.cliCommand.push.Metric"
+    ],
+    "enablePDIncidentBySeries": false,
+    "condition": "",
+    "conditions": {
+      "warn": "if(\r\n    ts(ignore.backup.maintenance.window) > 0, \r\n    (\r\n        ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.login.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.logs.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.push.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.start.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.stop.Metric\" and deployment=$config.pasCliFunctions.condition.deployment)\r\n    ),\r\n    6\r\n) <= $config.pasCliFunctions.condition.warn",
+      "severe": "if(\r\n    ts(ignore.backup.maintenance.window) > 0, \r\n    (\r\n        ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.login.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.logs.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.push.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.start.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.stop.Metric\" and deployment=$config.pasCliFunctions.condition.deployment)\r\n    ),\r\n    6\r\n) <= $config.pasCliFunctions.condition.severe"
+    },
+    "targets": {
+      "warn": $config.pasCliFunctions.targets.warn,
+      "severe": $config.pasCliFunctions.targets.severe
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "if(\r\n    ts(ignore.backup.maintenance.window) > 0, \r\n    (\r\n        ts(\"pcf.healthwatch.health.check.cliCommand.delete.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.login.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.logs.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.push.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.start.Metric\" and deployment=$config.pasCliFunctions.condition.deployment) +\r\n         ts(\"pcf.healthwatch.health.check.cliCommand.stop.Metric\" and deployment=$config.pasCliFunctions.condition.deployment)\r\n    ),\r\n    6\r\n)",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "This alert is an example of how derived metrics can conditionally enable/disable alerts, which listening for the firing of certain alerts - thereby firing when the dependency is met. A good example of how flexible Wavefront's alert conditions can be.",
+    "targetInfo":  $config.pasCliFunctions.targetInfo
+  }

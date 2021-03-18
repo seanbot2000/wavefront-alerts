@@ -1,0 +1,22 @@
+{
+    "minutes": $config.pasServiceInstanceDisk.minutes,
+    "name": "Service Instance Disk Alert",
+    "tags": {
+      $config.pasServiceInstanceDisk.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.system_metrics_agent.system_disk_persistent_percent.Percent"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, foundation=\"$config.foundation\" and deployment=\"service-instance_*\") > 90",
+      "severe": "ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, foundation=\"$config.foundation\" and deployment=\"service-instance_*\") > 95"
+    },
+    "targets": {},
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.system_metrics_agent.system_disk_persistent_percent.Percent, foundation=\"$config.foundation\" and deployment=\"service-instance_*\")",
+    "displayExpressionQBEnabled": false,
+    "resolveAfterMinutes": $config.pasServiceInstanceDisk.resolveAfterMinutes,
+    "targetInfo": $config.pasServiceInstanceDisk.targetInfo
+  }

@@ -1,0 +1,20 @@
+{
+    "minutes": $config.pasBbsTimeRequest.minutes,
+    "name": "PAS BBS Time to Handle Requests",
+    "tags": {
+        $config.pasBbsTimeRequest.customerTags
+    },
+    "alertType": "THRESHOLD",
+    "metricsUsed": [
+      "pcf.bbs.RequestLatency.nanos"
+    ],
+    "condition": "",
+    "conditions": {
+      "warn": "ts(pcf.bbs.RequestLatency.nanos)/1000000000 > $config.pasBbsTimeRequest.conditions.warn",
+      "severe": "ts(pcf.bbs.RequestLatency.nanos)/1000000000 > $config.pasBbsTimeRequest.conditions.severe"
+    },
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.bbs.RequestLatency.nanos)/1000000000",
+    "additionalInformation": "The maximum observed latency time over the past 60 seconds that the BBS took to handle requests across all its API endpoints. If this metric rises, the PAS API is slowing. Response to certain cf CLI commands is slow if request latency is high.\n1.\tCheck CPU and memory statistics in Ops Manager.\n2.\tCheck BBS logs for faults and errors that can indicate issues with BBS.\n3.\tTry scaling the BBS VM resources up. For example, add more CPUs and memory depending on its system.cpu/system.memory metrics.\n4.\tConsider vertically scaling the PAS backing database, if system.cpu and system.memory metrics for the database instances are high.\n5.\tIf the above steps do not solve the issue, collect a sample of the Diego Cell logs from the BBS VMs and contact Pivotal Support to troubleshoot further.",
+    "targetInfo": $config.pasBbsTimeRequest.targetInfo
+  }

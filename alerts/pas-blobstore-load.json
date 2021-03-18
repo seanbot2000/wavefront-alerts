@@ -1,0 +1,21 @@
+{
+    "severity": $config.pcfBlobstoreLoad.severity,
+    "minutes": $config.pcfBlobstoreLoad.minutes,
+    "name": "Blobstore Load Avg High",
+    "target": $config.pcfBlobstoreLoad.target,
+    "tags": {
+      $config.pcfBlobstoreLoad.customerTags
+    },
+    "alertType": "CLASSIC",
+    "metricsUsed": [
+      "num.cpus.nfs.olanonprod",
+      "ignore.backup.maintenance.window",
+      "pcf.system_metrics_agent.system_load_15m.Load"
+    ],
+    "condition": "((if(ts(pcf.system_metrics_agent.system_load_15m.Load, job=\"nfs_server\" and foundation=\"$config.foundation\") > (ts(num.cpus.nfs.olanonprod)*0.75), 1 , 0)) * (ts(ignore.backup.maintenance.window))) != 0",
+    "conditionQBEnabled": false,
+    "displayExpression": "ts(pcf.system_metrics_agent.system_load_15m.Load, job=\"nfs_server\" and foundation=\"$config.foundation\")",
+    "displayExpressionQBEnabled": false,
+    "additionalInformation": "",
+    "targetInfo": $config.pcfBlobstoreLoad.targetInfo
+  }

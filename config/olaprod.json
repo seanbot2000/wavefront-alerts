@@ -1,0 +1,1011 @@
+{
+    "foundation": "OLA Prod",
+    "wfHighRateHostIds": {
+        "severity": "INFO",
+        "minutes": 5,
+        "target": "",
+        "customerTags": [
+          "~integration.system"
+        ],
+        "resolveAfterMinutes": 5,
+        "targetInfo": []
+    },
+    "wfHighRateMetricsIds": {
+      "severity": "INFO",
+      "minutes": 5,
+      "target": "",
+      "customerTags": [
+          "~integration.system"
+        ],
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "wfHighRateStringIds": {
+      "severity": "INFO",
+      "minutes": 5,
+      "target": "",
+      "customerTags": [
+          "~integration.system"
+        ],
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasGoRouterLastRoute": {
+      "minutes": 10,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+          "warn": 30000,
+          "severe": 50000
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "resolveAfterMinutes": 10,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasGoRouterBadGateway": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 3,
+        "severe": 4
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasGoRouterFileDescriptors": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 50000,
+        "severe": 60000
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasGoRouterThroughput": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 900,
+        "severe": 1000
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasRouteEmitter": {
+      "minutes": 10,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 3,
+        "severe": 5
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasDiegoCellMemoryCap": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 3,
+        "severe": 1
+      },
+      "targets": {},
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasDiegoCellContainerCap": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "smoke": 35
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasAuctioneerLrpFailed": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 0.5,
+        "severe": 1
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasAuctioneerTaskAuctionsFailed": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+     "conditions": {
+        "warn": 0.5,
+        "severe": 1
+      },
+      "targetInfo": []
+    },
+    "pasAuctioneerTimeDiegoState": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 2,
+        "severe": 5
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasBbsTimeLrpConvergence": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 10,
+        "severe": 20
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasBbsTimeRequest": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 5,
+        "severe": 10
+      },
+      "targetInfo": []
+    },
+    "pasCcDiegoNotSync": {
+      "minutes": 1,
+      "customerTags": [
+          "cloud.controller",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 1
+      },
+      "resolveAfterMinutes": 1,
+      "targetInfo": []
+    },
+    "pasBbsMoreAppsThanExpected": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+     "conditions": {
+        "warn": 5,
+        "severe": 10
+      },
+     "targetInfo": []
+    },
+    "pasActiveLocks": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "locks",
+          "pcf"
+        ],
+     "conditions": {
+        "severe": 5
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasGoRouterServerError": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 1
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasDiegoCellReplication": {
+      "minutes": 15,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 50,
+        "severe": 100
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasDiegoCellDiskCap": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 95,
+        "severe": 98
+      },
+      "targets": {},
+      "resolveAfterMinutes": 5,
+      "targetInfo": []
+    },
+    "pasBbsFewerAppsThanExpected": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 5,
+        "severe": 10
+      },
+     "targetInfo": []
+    },
+    "pasBbsRunningAppsRateChange": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": -5,
+        "severe": -10
+      },
+      "targets": {
+        "warn": "target:CZI4MQsRVpoO625A",
+        "severe": "target:yyZomPfVUlDbXksE"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasCliLogin": {
+      "severity": "SEVERE",
+      "minutes": 10,
+      "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "pcf"
+        ],
+      "resolveAfterMinutes": 10,
+      "notificationResendFrequencyMinutes": 10,
+      "targetInfo": []
+    },
+    "pasCliPush": {
+      "severity": "SEVERE",
+      "minutes": 10,
+      "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "pcf"
+        ],
+      "resolveAfterMinutes": 10,
+      "notificationResendFrequencyMinutes": 10,
+      "targetInfo": []
+    },
+    "pasCliStart": {
+      "severity": "SEVERE",
+      "minutes": 10,
+      "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "pcf"
+        ],
+      "notificationResendFrequencyMinutes": 10,
+      "targetInfo": []
+    },
+    "pasCliLogs": {
+      "severity": "SEVERE",
+      "minutes": 10,
+     "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "pcf"
+        ],
+     "notificationResendFrequencyMinutes": 10,
+      "targetInfo": []
+    },
+    "pasCliStop": {
+      "severity": "SEVERE",
+      "minutes": 10,
+      "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "pcf"
+        ],
+      "notificationResendFrequencyMinutes": 10,
+      "targetInfo": []
+    },
+    "pasCliDelete": {
+      "severity": "SEVERE",
+      "minutes": 10,
+      "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "pcf"
+        ],
+      "notificationResendFrequencyMinutes": 10,
+      "targetInfo": []
+    },
+    "pasUnhealthyVm": {
+      "severity": "SEVERE",
+      "minutes": 60,
+      "target": "target:yyZomPfVUlDbXksE",
+      "customerTags": [
+          "bosh",
+          "garmin",
+          "ola",
+          "pcf",
+          "prod"
+        ],
+      "resolveAfterMinutes": 10,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasRouteEmitter": {
+      "minutes": 10,
+      "customerTags": [
+          "266073",
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 750,
+        "severe": 1000
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasNatsCpu": {
+      "severity": "SEVERE",
+      "minutes": 3,
+      "target": "target:PTNWDMcyDFV4n3d8,target:yyZomPfVUlDbXksE",
+      "customerTags": [
+          "garmin",
+          "nats",
+          "pcf"
+        ],
+      "resolveAfterMinutes": 1,
+      "targetInfo": [
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasGoRouterThroughputLow": {
+      "minutes": 5,
+     "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 125,
+        "severe": 100
+      },
+      "targets": {
+        "warn": "target:CZI4MQsRVpoO625A",
+        "severe": "target:yyZomPfVUlDbXksE"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasRoutePruning": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "nats",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 3,
+        "severe": 6
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+     "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasMetricsFlow": {
+      "minutes": 10,
+      "customerTags": [
+          "garmin",
+          "pcf",
+          "wavefront"
+        ],
+      "conditions": {
+        "warn": 1000,
+        "severe": 500
+      },
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "resolveAfterMinutes": 10,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasBbsCrashAppInstances": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": -5,
+        "severe": -10
+      },
+      "targets": {
+        "warn": "target:CZI4MQsRVpoO625A",
+        "severe": "target:yyZomPfVUlDbXksE,target:PTNWDMcyDFV4n3d8"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasLocksHeld": {
+      "severity": "WARN",
+      "minutes": 20,
+      "target": "target:CZI4MQsRVpoO625A",
+      "customerTags": [
+          "garmin",
+          "locks",
+          "pcf"
+        ],
+      "condition": 15,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        }
+      ]
+    },
+    "pasBlobstoreDiskFilling": {
+      "minutes": 60,
+      "customerTags": [
+          "blobstore",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 80,
+        "severe": 90
+      },
+      "targets": {
+        "warn": "target:CZI4MQsRVpoO625A",
+        "severe": "target:PTNWDMcyDFV4n3d8,target:yyZomPfVUlDbXksE"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasBlobstoreVmHealth": {
+      "severity": "WARN",
+      "minutes": 10,
+      "target": "target:PTNWDMcyDFV4n3d8",
+      "customerTags": [
+          "blobstore",
+          "garmin",
+          "pcf"
+        ],
+      "targetInfo": [
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasBlobStoreLoad": {
+      "severity": "WARN",
+      "minutes": 20,
+      "target": "target:yyZomPfVUlDbXksE",
+      "customerTags": [
+          "blobstore",
+          "garmin",
+          "pcf"
+        ],
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasAutoScalerFailure": {
+      "severity": "SEVERE",
+      "minutes": 5,
+      "target": "target:PTNWDMcyDFV4n3d8",
+      "customerTags": [
+          "autoscale",
+          "garmin",
+          "pcf",
+          "platformvalidator",
+          "sandbox"
+        ],
+      "resolveAfterMinutes": 35,
+      "targetInfo": [
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasInternalMysql": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "mysql",
+          "pcf",
+          "prod"
+        ],
+      "targets": {
+        "severe": "target:yyZomPfVUlDbXksE,target:PTNWDMcyDFV4n3d8"
+      },
+      "resolveAfterMinutes": 5,
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasDiegoCellAllLoadHigh": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "smoke": 40,
+        "warn": 50,
+        "severe": 60
+      },
+      "targets": {
+        "smoke": "target:CZI4MQsRVpoO625A",
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasGorouterAllCpuHigh": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "smoke": 20,
+        "warn": 30,
+        "severe": 40
+      },
+      "targets": {
+        "smoke": "target:CZI4MQsRVpoO625A",
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasGoRouterSingleCpuHigh": {
+      "minutes": 5,
+      "customerTags": [
+          "garmin",
+          "gorouter",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 30,
+        "severe": 40
+      },
+      "targets": {
+        "warn": "target:CZI4MQsRVpoO625A",
+        "severe": "target:yyZomPfVUlDbXksE"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        },
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasDiegoCellSingleCpuHigh": {
+      "minutes": 5,
+      "customerTags": [
+          "diego",
+          "garmin",
+          "pcf"
+        ],
+      "conditions": {
+        "warn": 80,
+        "severe": 90
+      },
+      "targets": {
+        "warn": "target:CZI4MQsRVpoO625A"
+      },
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "CZI4MQsRVpoO625A",
+          "name": "IT-Platform - Slack - Tier 2/3"
+        }
+      ]
+    },
+    "boshDirectorUnhealthy": {
+      "severity": "SEVERE",
+      "minutes": 60,
+      "target": "target:yyZomPfVUlDbXksE",
+      "customerTags": [
+          "director",
+          "garmin",
+          "pcf"
+        ],
+      "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        }
+      ]
+    },
+    "pasUnhealthyVms": {
+      "severity": "SEVERE",
+      "minutes": 60,
+      "target": "target:PTNWDMcyDFV4n3d8",
+      "customerTags": [
+          "bosh",
+          "garmin",
+          "pcf"
+        ],
+      "resolveAfterMinutes": 10,
+      "targetInfo": [
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    },
+    "pasCanaryAppUptime": {
+      "severity": "INFO",
+      "minutes": 5,
+      "target": "",
+      "customerTags": [
+          "uptime"
+        ],
+      "targetInfo": []
+    },
+    "pasServiceInstanceDisk": {
+      "minutes": 30,
+      "customerTags": [
+          "mysql",
+          "rabbit",
+          "redis",
+          "serviceinstance"
+        ],
+      "condition": "",
+      "conditions": {
+        "warn": 90,
+        "severe": 95
+      },
+      "targets": {},
+      "resolveAfterMinutes": 2,
+      "targetInfo": []
+    },
+    "pasMultipleCliFunctionsFailing": {
+      "minutes": 5,
+      "customerTags": [
+          "api",
+          "cli",
+          "garmin",
+          "kcg",
+          "pcf",
+          "prod"
+        ],
+      "targets": {
+        "warn": "target:yyZomPfVUlDbXksE",
+        "severe": "target:PTNWDMcyDFV4n3d8"
+      },
+     "targetInfo": [
+        {
+          "method": "WEBHOOK",
+          "id": "yyZomPfVUlDbXksE",
+          "name": "IT-Platform - Slack - Tier 0/1"
+        },
+        {
+          "method": "PAGERDUTY",
+          "id": "PTNWDMcyDFV4n3d8",
+          "name": "IT-Platform - Pagerduty - Tier 0/1"
+        }
+      ]
+    }
+  
